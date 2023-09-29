@@ -1,0 +1,103 @@
+<html>
+
+  <head>
+        <meta charset="utf-8">
+        <title>| Soundboard NSI |</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+  </head>
+
+  <style media="screen">
+        button{
+            width: 99px;
+            height: 99px;
+        }
+        button.btn-space{
+            width: 400px;
+        }
+        .row{
+            justify-content: center;
+        }
+        
+  </style>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+  <style>
+    body {
+        background-image: url('tunes/bg.jpg');
+        background-repeat: no-repeat, repeat;
+        background-size: cover;
+    }
+    
+  </style>
+
+  <body>
+
+	<div class="container" id="container">
+        <div class="row">&nbsp;</div>
+        <div class="row">
+            <button type="button" onclick="onPress('A')" class="btn btn-primary"><b>A</b><br>Don Pollo FORT</button>&nbsp;
+            <button type="button" onclick="onPress('Z')" class="btn btn-primary"><b>Z</b><br>OLA KSP</button>&nbsp;
+            <button type="button" onclick="onPress('E')" class="btn btn-primary"><b>E</b><br>SALAMALEKOUMALEKOUM</button>&nbsp;
+            <button type="button" onclick="onPress('R')" class="btn btn-primary"><b>R</b><br>Don Pollo Alien</button>&nbsp;
+            <button type="button" onclick="onPress('T')" class="btn btn-primary"><b>T</b><br>Très long</button>&nbsp;
+            <button type="button" onclick="onPress('Y')" class="btn btn-primary"><b>Y</b><br>Zelda FUCK YOU</button>&nbsp;
+            <button type="button" onclick="onPress('U')" class="btn btn-primary"><b>U</b><br>papa y cachou</button>&nbsp;
+            <button type="button" onclick="onPress('I')" class="btn btn-primary"><b>I</b><br>aie aie aie</button>&nbsp;
+            <button type="button" onclick="onPress('O')" class="btn btn-primary"><b>O</b><br>Don pollo alert</button>&nbsp;
+            <button type="button" onclick="onPress('P')" class="btn btn-primary"><b>P</b><br>YEEEE HAAAA</button>&nbsp;
+        </div>
+        <div class="row">&nbsp;</div>
+        <div class="row">
+            <button type="button" onclick="onPress('Q')" class="btn btn-primary"><b>Q</b><br>Franklin</button>&nbsp;
+            <button type="button" onclick="onPress('S')" class="btn btn-primary"><b>S</b><br>HoodIrony</button>&nbsp;
+        </div>
+        <div class="row">&nbsp;</div>
+        <div class="row">
+            <button type="button" onclick="onPress(' ')" class="btn btn-primary btn-space">SPACE</b><br>(Stop)</button>
+        </div>
+	</div> <!-- /container -->
+
+    <audio id="soundA" src="tunes/audio1.mp3"></audio>
+    <audio id="soundZ" src="tunes/audio2.mp3"></audio>
+    <audio id="soundE" src="tunes/audio3.mp3"></audio>
+    <audio id="soundR" src="tunes/audio4.mp3"></audio>
+    <audio id="soundT" src="tunes/audio5.mp3"></audio>
+    <audio id="soundY" src="tunes/audio6.mp3"></audio>
+    <audio id="soundU" src="tunes/audio7.mp3"></audio>
+    <audio id="soundI" src="tunes/audio8.mp3"></audio>
+    <audio id="soundO" src="tunes/audio9.mp3"></audio>
+    <audio id="soundP" src="tunes/audio10.mp3"></audio>
+    <audio id="soundQ" src="tunes/franklin.mp3"></audio>
+    <audio id="soundS" src="tunes/hoodirony.mp3"></audio>
+
+  </body>
+
+	<script type="text/javascript">
+
+        function onPress(key) {
+            stopSound()
+            if (key != " ") {
+                document.getElementById("sound"+key).play();
+            }
+            if (window.getSelection) { window.getSelection().removeAllRanges(); }
+            else if (document.selection) { document.selection.empty(); }
+        }
+
+        function onKeyboard(e) {
+            var key = e.key.toUpperCase();
+            console.log("KeyPress: "+key);
+            onPress(key);
+        }
+
+        function stopSound() {
+            var audios = document.getElementsByTagName("audio")
+            for (var i = 0; i<audios.length; i++) {
+                audios[i].pause();
+                audios[i].currentTime = 0;
+            }
+        }
+
+        document.addEventListener('keypress', onKeyboard, false);
+	</script>
+</html>
